@@ -7,6 +7,7 @@ import { ContentCache } from './cache.js';
 import { DeepSeek } from './deepseek.js';
 import { createServer } from './server.js';
 import { createHttpHandler } from './http.js';
+import { version } from './metadata.js';
 
 function integer(name: string, fallback: number) {
   const raw = process.env[name];
@@ -28,7 +29,7 @@ async function main() {
     return;
   }
   if (values.version) {
-    console.log('0.1.0');
+    console.log(version);
     return;
   }
   if (!['stdio', 'http'].includes(values.transport)) throw new Error('--transport must be stdio or http.');

@@ -11,7 +11,7 @@ Add the following to your MCP client configuration, replacing the API key. `npx`
 ```json
 {
   "mcpServers": {
-    "deepseek-search": {
+    "ds-websearch-mcp": {
       "command": "npx",
       "args": ["-y", "ds-websearch-mcp"],
       "env": {
@@ -29,17 +29,17 @@ Restart your MCP client to load the `search` and `fetch` tools.
 Run with your API key:
 
 ```sh
-codex mcp add deepseek-search --env DEEPSEEK_API_KEY=your-api-key -- npx -y ds-websearch-mcp
+codex mcp add ds-websearch-mcp --env DEEPSEEK_API_KEY=your-api-key -- npx -y ds-websearch-mcp
 ```
 
 Or add the following to `~/.codex/config.toml`:
 
 ```toml
-[mcp_servers.deepseek-search]
+[mcp_servers.ds-websearch-mcp]
 command = "npx"
 args = ["-y", "ds-websearch-mcp"]
 
-[mcp_servers.deepseek-search.env]
+[mcp_servers.ds-websearch-mcp.env]
 DEEPSEEK_API_KEY = "your-api-key"
 ```
 

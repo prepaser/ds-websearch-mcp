@@ -2,6 +2,7 @@ import { McpServer } from '@modelcontextprotocol/server';
 import * as z from 'zod/v4';
 import { ContentCache } from './cache.js';
 import { DeepSeek, searchResponse } from './deepseek.js';
+import { name, version } from './metadata.js';
 
 const maxLength = z.number().int().positive().default(5000)
   .describe('Maximum Unicode characters of page content to return. Default: 5000.');
@@ -34,7 +35,7 @@ function result<T extends Record<string, unknown>>(data: T) {
 }
 
 export function createServer(api: DeepSeek, cache: ContentCache) {
-  const server = new McpServer({ name: 'ds-websearch-mcp', version: '0.1.0' });
+  const server = new McpServer({ name, version });
   server.registerTool('search', {
     description: 'Search the web using DeepSeek. Supports site:, -site:, quoted phrases, lang:, after:, and before:. The API currently documents a 128-character query limit. Page content is optional and paginated; read more with fetch(cursor).',
     inputSchema: z.object({
